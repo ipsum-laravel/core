@@ -10,5 +10,5 @@
 Actuelement impossible de la faire via le package
 Mettre les fichier dans le repertoire seed
 
-    php artisan db::seed
+    php artisan db:seed
 
