@@ -16,7 +16,7 @@ class Liste
     * Nombres de ligne a afficher dans la liste
     * @var int
     */
-    protected $nb_lignes = 10;
+    protected $nb_lignes = 30;
 
     /**
     * Nombres de page a afficher dans la pagination : toujours impair
