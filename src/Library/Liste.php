@@ -504,7 +504,7 @@ class Liste
 
         if ($this->tri['colonne'] == $colonne) {
             $ordre = $this->tri['ordre'] == 'ASC' ? 'DESC' : 'ASC';
-            $img = '<img src="'.asset('admin/img/').'%s.png" alt="%s" />';
+            $img = '<img src="'.asset('packages/ipsum/admin/img').'/%s.png" alt="%s" />';
             $ordre_label = $ordre == 'ASC' ? $ordre_asc : $ordre_desc;
             $img = sprintf($img, strtolower($this->tri['ordre']), $ordre_label);
         }
