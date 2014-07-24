@@ -27,7 +27,7 @@ HTML::macro("notifications", function($errors = null, $template = 'IpsumCore::pa
         }
 
         if(!empty($messages)) {
-            $views = View::make($template, array('type' => $type, 'label' => Lang::get($label), 'messages' => $messages));
+            $views .= View::make($template, array('type' => $type, 'label' => Lang::get($label), 'messages' => $messages));
         }
     }
     return empty($views) ? null : $views;
