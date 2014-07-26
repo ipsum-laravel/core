@@ -1,4 +1,4 @@
-# Instalation du package d'administration d'Ipsum
+# Instalation du package core d'Ipsum
 
 
 ## Créations des tables
