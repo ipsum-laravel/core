@@ -37,7 +37,7 @@ class PaginationPresenter extends \Illuminate\Pagination\Presenter {
 	 */
 	public function getActivePageWrapper($text)
 	{
-		return '<li class="active"><span>'.$text.'</span></li>';
+		return '<li class="active"><strong>'.$text.'</strong></li>';
 	}
 
 }
