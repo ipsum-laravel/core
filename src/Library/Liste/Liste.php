@@ -15,7 +15,7 @@ class Liste
     * Nombres de ligne a afficher dans la liste
     * @var int
     */
-    protected $nb_lignes = 2;
+    protected $nb_lignes = 25;
 
     /**
     * Nombres de ligne a afficher dans la liste
