@@ -71,7 +71,6 @@ class Liste
     */
     public function setRequete($requete)
     {
-        // TODO
         $this->requete = $requete;
     }
 
@@ -208,20 +207,9 @@ class Liste
     }
 
 
-    protected function getParametres($parametres_a_exclure = null)
-    {
-        $parametres = $this->parametres;
-
-        if ($parametres_a_exclure !== null) {
-            $parametres = $this->array_exclusion_recursive($parametres, $parametres_a_exclure);
-        }
-
-        return $parametres;
-    }
-
     public function getUrl($parametres_a_exclure = array(), $page = false)
     {
-        // Voi la method Paginator::getUrl()
+        // Voir la method Paginator::getUrl()
 
         $parametres = $this->getParametres($parametres_a_exclure);
 
@@ -235,17 +223,11 @@ class Liste
         return $this->lignes->getEnvironment()->getCurrentUrl().'?'.http_build_query($parametres, null, '&'); // TODO .$fragment
     }
 
-    public function inputsHidden($parametres_a_exclure = array())
+    public function inputsHidden()
     {
         $html = '';
-        foreach ($this->getParametres($parametres_a_exclure) as $nom => $value) {
-            if (is_array($value)) {
-                foreach ($value as $nom2 => $value2) {
-                    $html .= '<input type="hidden" name="'.e($nom).'['.e($nom2).']" value="'.e($value2).'">';
-                }
-            } else {
-                $html .= '<input type="hidden" name="'.e($nom).'" value="'.e($value).'">';
-            }
+        foreach ($this->parametres['tri'] as $nom => $value) {
+            $html .= '<input type="hidden" name="tri['.e($nom).']" value="'.e($value).'">';
         }
         return $html;
     }
@@ -277,6 +259,17 @@ class Liste
         return isset($this->filtres[$nom]) ? $this->filtres[$nom]['valeur'] : false;
     }
 
+
+    protected function getParametres($parametres_a_exclure = null)
+    {
+        $parametres = $this->parametres;
+
+        if ($parametres_a_exclure !== null) {
+            $parametres = $this->array_exclusion_recursive($parametres, $parametres_a_exclure);
+        }
+
+        return $parametres;
+    }
 
     protected function array_exclusion_recursive (array $array, array $exclusion) {
         foreach ($array as $key => $value) {
