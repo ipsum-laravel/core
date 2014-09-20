@@ -215,12 +215,12 @@ class Liste
 
         if ($page) {
             $pages = array(
-                $this->lignes->getEnvironment()->getPageName() => $this->getPageCourante(),
+                $this->lignes->getFactory()->getPageName() => $this->getPageCourante(),
             );
             $parametres = array_merge($pages, $parametres);
         }
 
-        return $this->lignes->getEnvironment()->getCurrentUrl().'?'.http_build_query($parametres, null, '&'); // TODO .$fragment
+        return $this->lignes->getFactory()->getCurrentUrl().'?'.http_build_query($parametres, null, '&'); // TODO .$fragment
     }
 
     public function inputsHidden()
