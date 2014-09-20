@@ -9,7 +9,7 @@ class PaginationPresenter extends \Illuminate\Pagination\Presenter {
 	 * @param  int  $page
 	 * @return string
 	 */
-	public function getPageLinkWrapper($url, $page)
+	public function getPageLinkWrapper($url, $page, $rel = null)
 	{
 	    // TODO attention la pagination n'est pas forcément utilisé avec la Liste
 	    // $nofollow = count($this->paginator->query) > 0 ? 'rel="nofollow"' : '';
