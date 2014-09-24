@@ -240,8 +240,10 @@ class Liste
 
         $tri = $this->tris[$nom_tri];
 
+        $fleche = '';
         if ($tri['actif']) {
             $ordre = $tri['ordre'] == 'desc' ? 'asc' : 'desc';
+            $fleche = '&nbsp;'.($tri['ordre'] == 'desc' ? '&#x21D3;' : '&#x21D1;');
         } else {
             $ordre = $ordre_defaut === null ? $tri['ordre'] : $ordre_defaut;
         }
@@ -251,6 +253,7 @@ class Liste
         return '<a rel="nofollow" href="'.$this->getUrl(array('tri')).'&tri['.$nom_tri.']='.$ordre.'" '
         .'title="'.trans('IpsumCore::liste.tri.title', array('nom' => $nom_tri, 'ordre' => $ordre_intitule)).'">'
         .e($intitule_lien)
+        .$fleche
         .'</a>';
     }
 
