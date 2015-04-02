@@ -45,7 +45,7 @@ class Liste
     * Données complémentaires GET de l'url
     * @var array
     */
-    protected $url_requete = '';
+    protected $query_complementaires = null;
 
 
     protected $lignes;
@@ -67,7 +67,7 @@ class Liste
 
     /**
     * Setter de requete
-    * @param array $url_requete
+    * @param array $requete
     */
     public function setRequete($requete)
     {
@@ -135,12 +135,15 @@ class Liste
     }
 
     /**
-    * Setter de url_requete
-    * @param array $url_requete
+    * Setter de query_complementaires
+    * @param array $query_complementaires
     */
-    public function setUrlRequete($url_requete)
+    public function setQueryComplementaires($query_complementaires)
     {
-        $this->url_requete = $url_requete;
+        $this->query_complementaires = $query_complementaires;
+        foreach($query_complementaires as $query => $value) {
+            $this->parametres[$query] = $value;
+        }
     }
 
     public function getPageCourante()
@@ -226,8 +229,14 @@ class Liste
     public function inputsHidden()
     {
         $html = '';
+
         foreach ($this->parametres['tri'] as $nom => $value) {
             $html .= '<input type="hidden" name="tri['.e($nom).']" value="'.e($value).'">';
+        }
+        if ($this->query_complementaires !== null) {
+            foreach ($this->query_complementaires as $nom => $value) {
+                $html .= '<input type="hidden" name="'.e($nom).'" value="'.e($value).'">';
+            }
         }
         return $html;
     }
