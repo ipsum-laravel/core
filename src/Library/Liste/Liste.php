@@ -209,8 +209,7 @@ class Liste
         return $this->lignes->getTotal();;
     }
 
-
-    public function getUrl($parametres_a_exclure = array(), $page = false)
+    public function getQuery($parametres_a_exclure = array(), $page = false)
     {
         // Voir la method Paginator::getUrl()
 
@@ -223,7 +222,12 @@ class Liste
             $parametres = array_merge($pages, $parametres);
         }
 
-        return $this->lignes->getFactory()->getCurrentUrl().'?'.http_build_query($parametres, null, '&'); // TODO .$fragment
+        return http_build_query($parametres, null, '&'); // TODO .$fragment
+    }
+
+    public function getUrl($parametres_a_exclure = array(), $page = false)
+    {
+        return $this->lignes->getFactory()->getCurrentUrl().'?'.$this->getQuery($parametres_a_exclure, $page);
     }
 
     public function inputsHidden()
