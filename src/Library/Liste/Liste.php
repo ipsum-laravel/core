@@ -234,8 +234,10 @@ class Liste
     {
         $html = '';
 
-        foreach ($this->parametres['tri'] as $nom => $value) {
-            $html .= '<input type="hidden" name="tri['.e($nom).']" value="'.e($value).'">';
+        if (isset($this->parametres['tri'])) {
+            foreach ($this->parametres['tri'] as $nom => $value) {
+                $html .= '<input type="hidden" name="tri['.e($nom).']" value="'.e($value).'">';
+            }
         }
         if ($this->query_complementaires !== null) {
             foreach ($this->query_complementaires as $nom => $value) {
