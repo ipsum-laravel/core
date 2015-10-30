@@ -164,6 +164,10 @@ class Liste
         foreach ($this->filtres as $filtre) {
             if ($filtre['valeur'] !== null) {
                 $operateur = isset($filtre['operateur']) ? $filtre['operateur'] : '=';
+                if ($operateur == 'in') {
+                    $requete->whereIn($filtre['colonnes'], explode($filtre['separation'], $filtre['valeur']));
+                    continue;
+                }                
                 if ($operateur == 'like') {
                     // Pas de posibilité de faire tous les like
                     $filtre['valeur'] = '%'.$filtre['valeur'].'%';
