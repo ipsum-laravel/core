@@ -199,9 +199,9 @@ class Liste
         return $this->lignes;
     }
 
-    public function pagination()
+    public function pagination($view = null)
     {
-        return $this->lignes->links();
+        return $this->lignes->links($view);
     }
 
     /**
