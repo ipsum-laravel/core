@@ -5,7 +5,12 @@
  *
  * These messages are set using Session::flash(<message_type>, <message>);
  */
-HTML::macro("notifications", function($errors = null, $template = 'IpsumCore::partials.notifications') {
+HTML::macro("notifications", function($errors = null, $template = null) {
+
+    if ($template === null) {
+        $template = Config::has('view.notification') ? Config::get('view.notification') : 'IpsumCore::partials.notifications';
+    }
+
     $views =  '';
     $alert_types = array(
         "error" => 'IpsumCore::notifications.title.error',
