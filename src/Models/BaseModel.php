@@ -34,7 +34,13 @@ class BaseModel extends Eloquent {
                 $model->{$field} = null;
             }
         }
-    }    
+    }
+
+    public static function getRules()
+    {
+        // Pour être rétrocompatible
+        return static::$rules;
+    }
 
     public static function validate($data, $rules = null, $message = array()) {
         $rules = $rules === null ? static::getRules() : $rules;
