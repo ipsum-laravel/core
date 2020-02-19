@@ -191,7 +191,8 @@ class Liste
         }
 
 
-        return $this->requete = $requete;
+        $this->requete = clone $requete;
+        return $requete;
     }
 
     public function rechercherLignes()
