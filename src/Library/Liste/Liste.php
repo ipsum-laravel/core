@@ -73,6 +73,11 @@ class Liste
     {
         $this->requete = $requete;
     }
+    
+    public function getRequete()
+    {
+        return $this->requete;
+    }
 
     /**
     * Setter de filtres
@@ -186,7 +191,7 @@ class Liste
         }
 
 
-        return $requete;
+        return $this->requete = $requete;
     }
 
     public function rechercherLignes()
@@ -210,7 +215,7 @@ class Liste
     */
     public function count()
     {
-        return $this->lignes->getTotal();;
+        return $this->lignes->getTotal();
     }
 
     public function getQuery($parametres_a_exclure = array(), $page = false)
